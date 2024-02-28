@@ -3,8 +3,8 @@ import pickle
 import numpy as np
 
 app = Flask(__name__)
-model = pickle.load(open('model.pkl', 'rb'))  # Load the trained model (pickle file)
-scaler = pickle.load(open('minmax_scaler.pkl', 'rb'))
+model = pickle.load(open('api/model.pkl', 'rb'))  # Load the trained model (pickle file)
+scaler = pickle.load(open('api/minmax_scaler.pkl', 'rb'))
 
 @app.route('/')
 def home():
@@ -25,9 +25,9 @@ def predict():
         else:
             msg = 'No heart attack expected'
 
-        response = {
-            'prediction':msg
-        }
+        # response = {
+        #     'prediction':msg
+        # }
         
         return render_template('index.html', prediction = msg)
         # return jsonify(response)
